@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width = device-width, initial-scale =1.0">
+    <title>Learning Vue</title>
+
+    <!----Here you link to the Vue library -->
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+
+<body>
+
+    <h1>Hello, Vue :)</h1>
+
+    <div id="app">
+        <h2>I am a template written inside the html section</h2>
+
+
+        <!--To take the passed value-->
+        <p>{{Book_Title}} - {{Author_name}} - {{Age}}</p>
+
+
+        <!--v-on:click is a directive to handle what will happen when the user clicks on that element(a button here). The click called an event-->
+        <!--V is for vue // on is for on mouse (maybe something else idk till now)-->
+        <!--the sting after = is what happens whin this event is triggered-->
+        <button v-on:click="Age++">Increase Age</button>
+        <br>
+        <br>
+        <button v-on:click="Age--">Decrease Age</button>
+        <br>
+        <br>
+        <!--@ is a replacement for v-on/ you don't need to write {{}} for the variable name -->
+        <div @click="Book_Title = 'New Title'"> Change Book Title1 </div>
+        
+        <br>
+        <!--Here is another way to deal with events is by calling the changeTitle method inside the methods property -->
+        <div @click="changeTitle"> Change Book Title2 </div>
+
+        <br>
+
+        <!--Here you can pass some arguements to it -->
+        <div @click="changeTitleAgain('Hello World')"> Change Book Title3 </div>
+
+
+
+        <!--v-if is another directive that will make this div appear if the = "" is true -->
+        <div v-if="showBox">
+            <p>{{Book_Title}} - {{Author_name}} - {{Age}}</p>
+        </div>
+        <button @click="toggleShowBox">
+            <span v-if="showBox">Hide Box</span>
+           
+            <!--you can use else-->
+            <span v-else>Show Box</span>
+        </button>
+
+        <!--You can also use the directive v-show to replace the if in show -->
+        <!--IT works in a different way as the v-if actually removes the element from the DOM but the v-show uses CSS instead
+            v-if is more time consuming -->
+        <div v-show="showBox">Currently Showing Box</div>
+    </div>
+ 
+
+    <!--Link to the Js file you use-->
+    <script src="app.js"></script>
+
+</body>
+
+
+</html>
