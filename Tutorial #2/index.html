@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width = device-width, initial-scale =1.0">
+    <title>Learning Vue</title>
+     <!----Here you link to the Vue library -->
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+
+    <h1>Hello, Vue :)</h1>
+
+    <div id="app">
+        <div v-if="showBox">
+        <!--Outputting Lists-->
+            <div>
+                <ul>
+                    <!--Making a for loop with vue//// :class= fav just if book.isFav outputs true // this is very useful to use different css -->
+                    <!--filteredBooks will print only the Books that is favourite /// you can replace it with Books to print them all-->
+                    <li v-for="book in filteredBooks" :class="{fav:book.isFav}" @click="book.isFav= !book.isFav">
+                        <img :src="book.img" :alt="book.Book_Title">
+                        <h4>{{book.Book_Title}}</h4> <span>{{book.Author_name}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <button @click="toggleShowBox">
+            <span v-if="showBox">Hide Box</span>
+            <!--you can use else-->
+            <span v-else>Show Box</span>
+
+        
+
+        </button>
+        <br>
+
+        <!--Attribute binding : this means that you need some attributes of the html tags to be variable
+            Not a text that we print / but the attribute that the tag itself uses-->
+
+            <a v-bind:href="url">Google</a>
+            <!--You can also use :href directly instead of v-bind:href-->
+            <!--This is available for many other attributes like src/alt in img-->
+            <br>
+        <!--Mouse Events
+            $event is to pass the event opject 
+            you need to pass it explicitly if you're passing any arguments
+            if you're not, it will be the first argument by default-->
+
+        <div class="box" @mouseover="handlemouseevent($event,5)">mouseover</div>
+        <div class="box" @mouseleave="handlemouseevent($event)">mouseleave</div>
+        <div class="box"@dblclick="handlemouseevent($event)">doubleclick</div>
+        <div class="box" @mousemove = "handlemousemove">position : {{x}} - {{y}}</div>
+
+
+
+    </div>
+ 
+
+    <!--Link to the Js file you use-->
+    <script src="app.js"></script>
+
+</body>
+
+
+</html>
